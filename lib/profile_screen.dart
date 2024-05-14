@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:surf_flutter_kerlingo/assets/app_colors.dart';
+import 'package:surf_flutter_kerlingo/assets/app_strings.dart';
+import 'package:surf_flutter_kerlingo/components/property_item.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -8,7 +11,9 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Профиль"),
+        title: Text(
+          AppString.profile,
+        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {},
@@ -16,12 +21,12 @@ class ProfileScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {},
-            child: Text("Save"),
+            child: Text(AppString.save),
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
+        padding: const EdgeInsets.fromLTRB(20, 8, 20, 8),
         child: SizedBox(
           width: double.infinity,
           child: Column(
@@ -36,14 +41,14 @@ class ProfileScreen extends StatelessWidget {
                 width: 80,
                 child: Center(
                     child: Text(
-                  "Edit",
+                  AppString.edit,
                   style: TextStyle(color: Colors.white),
                 )),
               ),
               SizedBox(
                 height: 24,
               ),
-              Text("Мои награды"),
+              Text(AppString.rewards),
               SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -58,7 +63,69 @@ class ProfileScreen extends StatelessWidget {
                   SizedBox(width: 16),
                   Text("🥉", style: TextStyle(fontSize: 32)),
                 ],
-              )
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Column(
+                children: [
+                  PropertyItem(title: AppString.name, value: AppString.namePlayer),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  PropertyItem(title: AppString.email, value: AppString.emailPlayer),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  PropertyItem(title: AppString.birth, value: AppString.birthPlayer),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  PropertyItem(
+                    title: AppString.team,
+                    value: AppString.teamPlayer,
+                    onPressed: () {},
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  PropertyItem(
+                    title: AppString.position,
+                    value: AppString.positionPlayer,
+                    onPressed: () {},
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  PropertyItem(
+                    title: AppString.theme,
+                    value: "Системная",
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: SizedBox(
+                    height: 48,
+                    width: double.infinity,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
+                        side: BorderSide(width: 2, color: AppColors.logoutColorLight),
+                      ),
+                      child: Text(
+                        "Logout",
+                        style: TextStyle(color: AppColors.logoutColorLight),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
