@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:surf_flutter_kerlingo/assets/app_colors.dart';
 import 'package:surf_flutter_kerlingo/assets/app_strings.dart';
+import 'package:surf_flutter_kerlingo/bloc/theme_bloc.dart';
+import 'package:surf_flutter_kerlingo/components/custom_radio.dart';
 import 'package:surf_flutter_kerlingo/components/property_item.dart';
+import 'package:surf_flutter_kerlingo/components/theme_picker.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -99,8 +103,8 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   PropertyItem(
                     title: AppString.theme,
-                    value: "Системная",
-                    onPressed: () {},
+                    value: context.read<ThemeBloc>().state.mode == ThemeMode.dark ? "Темная" : "Светлая",
+                    onPressed: () => showModalBottomSheet(context: context, builder: (context) => ThemePicker()),
                   ),
                 ],
               ),
